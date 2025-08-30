@@ -1,0 +1,107 @@
+# Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored
+
+## AIM:
+To write a program to predict the marks scored by a student using the simple linear regression model.
+
+## Equipments Required:
+1. Hardware – PCs
+2. Anaconda – Python 3.7 Installation / Jupyter notebook
+
+## Algorithm
+1. Collect the data
+Gather dataset of input (independent variable, e.g., hours studied) and output (dependent variable, e.g., marks scored).
+
+Train the model
+Fit a simple linear regression model:
+
+𝑦
+=
+𝑚
+⋅
+𝑥
++
+𝑐
+y=m⋅x+c
+
+where m = slope (relationship strength) and c = intercept.
+
+Test the model
+Use test data to evaluate how well the model predicts marks compared to actual values.
+
+Predict new values
+Input new study hours (x) into the trained model to predict the expected marks (y).
+2. 
+3. 
+4. 
+
+## Program:
+```
+/*
+Program to implement the simple linear regression model for predicting the marks scored.
+Developed by: Dhanush
+RegisterNumber:  25005353
+*/# Simple Linear Regression: Predicting Student Marks
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+
+# -----------------------------
+# Step 1: Load Dataset
+# -----------------------------
+# Example dataset: Hours studied vs Marks scored
+data = {
+    'Hours': [1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9],
+    'Marks': [20, 23, 25, 28, 32, 35, 39, 42, 46, 49, 52, 56, 60, 63, 67, 71]
+}
+df = pd.DataFrame(data)
+
+# Independent variable (X) and dependent variable (y)
+X = df[['Hours']]   # 2D array for sklearn
+y = df['Marks']
+
+# -----------------------------
+# Step 2: Split Data
+# -----------------------------
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# -----------------------------
+# Step 3: Train Linear Regression Model
+# -----------------------------
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# -----------------------------
+# Step 4: Make Predictions
+# -----------------------------
+y_pred = model.predict(X_test)
+
+# -----------------------------
+# Step 5: Evaluate
+# -----------------------------
+print("Slope (Coefficient):", model.coef_[0])
+print("Intercept:", model.intercept_)
+print("Predicted marks for 5 hours study:", model.predict([[5]])[0])
+
+# -----------------------------
+# Step 6: Visualization
+# -----------------------------
+plt.scatter(X, y, color='blue', label="Actual Data")
+plt.plot(X, model.predict(X), color='red', linewidth=2, label="Regression Line")
+plt.xlabel("Hours Studied")
+plt.ylabel("Marks Scored")
+plt.title("Hours vs Marks (Simple Linear Regression)")
+plt.legend()
+plt.show()
+
+```
+
+## Output:
+![simple linear regression model for predicting the marks scored](sam.png<img width="738" height="574" alt="Screenshot (3)" src="https://github.com/user-attachments/assets/6c91d37b-38db-4cc6-a212-ba917d0781fc" />
+)
+
+
+## Result:
+Thus the program to implement the simple linear regression model for predicting the marks scored is written and verified using python programming.
